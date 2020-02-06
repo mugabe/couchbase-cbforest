@@ -32,7 +32,7 @@ namespace cbforest {
         kDebug,
         kInfo,
         kWarning,
-        kError,
+        kLogError,
         kNone
     };
     extern logLevel LogLevel;

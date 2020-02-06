@@ -115,7 +115,8 @@ C4View* c4view_open(C4Database* db,
                 }
                 return (new c4View(db, path, viewName, config, version))->retain();
             } else {
-                throw error;
+                cbforest::error errorcpy = error;
+                throw errorcpy;
             }
         }
     } catchError(outError);

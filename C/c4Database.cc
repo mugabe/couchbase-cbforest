@@ -255,6 +255,7 @@ C4Database* c4db_open(C4Slice path,
 {
     auto pathStr = (std::string)path;
     auto config = c4DbConfig(flags, encryptionKey);
+    
     try {
         try {
             return (new c4Database(pathStr, config))->retain();
@@ -269,7 +270,8 @@ C4Database* c4db_open(C4Slice path,
                 db->setCompactionMode(FDB_COMPACTION_AUTO);
                 return db;
             } else {
-                throw error;
+                cbforest::error errorcpy = error;
+                throw errorcpy;
             }
         }
     }catchError(outError);

@@ -26,7 +26,7 @@ namespace cbforest {
 
 
     void error::assertionFailed(const char *fn, const char *file, unsigned line, const char *expr) {
-        if (LogLevel > kError || LogCallback == NULL)
+        if (LogLevel > kLogError || LogCallback == NULL)
             fprintf(stderr, "Assertion failed: %s (%s:%u, in %s)", expr, file, line, fn);
         WarnError("Assertion failed: %s (%s:%u, in %s)", expr, file, line, fn);
         throw error(error::AssertionFailed);

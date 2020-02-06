@@ -30,14 +30,14 @@ void _Log(logLevel, const char *message, ...) noexcept;
     #define Debug(MESSAGE, ...)      LogAt(kDebug,   MESSAGE, __VA_ARGS__)
     #define Log(MESSAGE, ...)        LogAt(kInfo,    MESSAGE, __VA_ARGS__)
     #define Warn(MESSAGE, ...)       LogAt(kWarning, MESSAGE, __VA_ARGS__)
-    #define WarnError(MESSAGE, ...)  LogAt(kError,   MESSAGE, __VA_ARGS__)
+    #define WarnError(MESSAGE, ...)  LogAt(kLogError,   MESSAGE, __VA_ARGS__)
 #else
     #define LogAt(LEVEL, MESSAGE...) \
                 ({if (__builtin_expect(LogLevel <= LEVEL, false)) _Log(LEVEL, MESSAGE);})
     #define Debug(MESSAGE...)      LogAt(kDebug,   MESSAGE)
     #define Log(MESSAGE...)        LogAt(kInfo,    MESSAGE)
     #define Warn(MESSAGE...)       LogAt(kWarning, MESSAGE)
-    #define WarnError(MESSAGE...)  LogAt(kError,   MESSAGE)
+    #define WarnError(MESSAGE...)  LogAt(kLogError,   MESSAGE)
 #endif
 
 // Debug(...) is stripped out of release builds
